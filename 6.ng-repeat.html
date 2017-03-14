@@ -1,0 +1,57 @@
+<html>
+   <head>
+      <title></title>
+   </head>
+   
+      <body ng-app="myModule">
+      <h1>Sample Application</h1>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+      <script>
+	  var myApp = angular
+	              .module("myModule",[])
+	              .controller("myController",function($scope){
+	var countries = [
+	                 {
+	                  name:"UK",
+					  cities:[
+					   {name: "London"},
+					   {name: "Manchester"},
+					   {name: "Bermingham"}
+					  ]
+					  },
+					  {
+					  name:"US",
+					  cities:[
+					   {name: "Los Angeles"},
+					   {name: "Chicago"},
+					   {name: "Houston"}
+					  ]
+					  },
+					  {
+					  name:"India",
+					  cities:[
+					  {name: "Hyderabad"},
+					   {name: "Chennai"},
+					   {name: "Bangalore"}
+					  ]
+					  }
+					  ];
+	
+	
+	  $scope.countries=countries;	 
+});
+</script>
+<div ng-controller="myController">
+<ul>
+<li ng-repeat="country in countries">
+{{country.name}} - Index = {{$index}}
+<ul>
+<li ng-repeat="city in country.cities">
+{{city.name}} - Parent Index = {{$parent.$index}}, Index = {{$index}}
+</li>
+</ul>
+</li>
+</ul>
+</div>
+   </body>
+</html>
